@@ -6,7 +6,7 @@ const config = require('./config');
 
 const URI = config.mongo.uri;
 
-mongoose.connect(process.env.URI || URI, { useNewUrlParser: true });
+mongoose.connect(process.env.MONGODB_URI || URI, { useNewUrlParser: true });
 
 // Success
 mongoose.connection.on('connected', () => {

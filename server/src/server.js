@@ -10,6 +10,9 @@ const routes = require('./routes');
 
 const PORT = 8080;
 
+// establish connection with MongoDB
+require('./config');
+
 //middleware init
 app.use(cors());
 app.use(helmet());
