@@ -8,12 +8,20 @@ const apiController = require('../controllers/apiController');
 router
     // All blog entries
     .route('/')
-    .get(apiController.getAll);
+    .get(apiController.getAll)
+
+    // TODO: Secure with jwt
+    .post(apiController.create);
 
 router
     // Specific blog entry
     .route('/:id')
-    .get(apiController.getById);
+    .get(apiController.getById)
+
+    // TODO: Secure with jwt
+    .put(apiController.update)
+    .delete(apiController.remove);
+
 
 
 module.exports = router;
