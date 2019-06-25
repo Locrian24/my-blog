@@ -1,10 +1,14 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import AJAX from '../utils/ajax';
+import EntryNav from '../components/EntryNav';
 
 class Entries extends React.Component {
     state = {
-        entries: null
+        entries: null,
+        visibleEntries: null,
+        postsPerPage: 4,
+        currentPage: 1
     }
 
     componentDidMount() {
@@ -13,17 +17,41 @@ class Entries extends React.Component {
 
     loadEntries = () => {
         AJAX.getAllEntries()
-            .then(res => this.setState({ entries: res.data }))
-            .catch(err => console.log('Error Loading Blog Entries: ' + err));
+            .then(res => {
+                this.setState({ entries: res.data});
+            })
+            .catch(err => 'Error getting entries: ' + err);
+
+    };
+
+    shiftCurrentEntries = (pageNumber) => {
+        this.setState({ currentPage: pageNumber });
     }
 
     render() {
+        // Redefine state variables for ease
+        const entries = this.state.entries;
+        const postsPerPage = this.state.postsPerPage;
+        const currentPage = this.state.currentPage;
+
+        let currentEntries = null;
+
+        // Determine visible posts once entries is populated
+        if (entries) {
+            const lastIndex = currentPage * postsPerPage;
+            const firstIndex = lastIndex - postsPerPage;
+            currentEntries = entries.slice(firstIndex, lastIndex);
+        }
+
         return (
             <div className="container m-3">
-                <h1>My Blog</h1>
-                { this.state.entries === null && <p>Loading Blog Entries...</p> }
 
-                { this.state.entries && this.state.entries.map(entry => (
+                { entries === null && <p>Loading Blog Entries...</p> }
+
+                { entries && currentEntries && (
+                    <div>
+                    {
+                    currentEntries.map(entry => (
                         <div key={entry.id}>
                             <Link to={`/entries/${entry.id}`}>
                                 <div className="card mt-3">
@@ -37,10 +65,19 @@ class Entries extends React.Component {
                             </Link>
                         </div>
                     ))
-                }
+                    }
+                    <EntryNav 
+                        currentPage={currentPage}
+                        totalPosts={entries.length}
+                        postsPerPage={postsPerPage}
+                        shiftCurrentEntries={this.shiftCurrentEntries}
+                    />
+                    </div> 
+                )}
             </div>
-        );
+        )
     }
 }
+
 
 export default Entries;

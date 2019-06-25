@@ -9,6 +9,7 @@ function App() {
   return (
     <Router>
       <div className="container">
+        <h1 className="text-monospace m-4 pl-3">My Blog</h1>
         <Switch>
           <Route exact path="/" component={Entries} />
           <Route exact path="/entries" component={Entries} />

@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const serverUrl = 'http://localhost:8080';
+//!const serverUrl = 'http://localhost:8080';
 
 //! Using JSON Placeholder right now
 
