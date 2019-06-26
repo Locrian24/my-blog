@@ -19,6 +19,8 @@ class Entry extends React.Component {
     }
 
     render () {
+        const entryId = this.props.match.params.entryId;
+
         return (
             <div className="container">
                 {this.state.entry === null && <p>Loading Entry...</p> }
@@ -35,10 +37,17 @@ class Entry extends React.Component {
                         </div>
                     </div>
 
-                    <div className="mt-5">
-                        <Link to={`/entries/`}>
-                            <p>Go back to entries...</p>
-                        </Link>
+                    <div className="row mt-5">
+                        <div className="col text-left">
+                            <Link to={`/entries/`}>
+                                <p>Go back to entries...</p>
+                            </Link>
+                        </div>
+                        <div className="col text-right">
+                            <Link to={`/entry-edit/${entryId}`}>
+                                <p>Edit this post...</p>
+                            </Link>
+                        </div>
                     </div>
                 </div>
                     

@@ -1,7 +1,7 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
 import AJAX from '../utils/ajax';
 import EntryNav from '../components/EntryNav';
+import EntryPreview from '../components/EntryPreview';
 
 class Entries extends React.Component {
     state = {
@@ -43,29 +43,22 @@ class Entries extends React.Component {
             currentEntries = entries.slice(firstIndex, lastIndex);
         }
 
+        if (entries === null ) return <p>Loading Blog Entries...</p>
+
         return (
             <div className="container m-3">
-
-                { entries === null && <p>Loading Blog Entries...</p> }
 
                 { entries && currentEntries && (
                     <div>
                     {
                     currentEntries.map(entry => (
                         <div key={entry.id}>
-                            <Link to={`/entries/${entry.id}`}>
-                                <div className="card mt-3">
-                                    <div className="card-header">{entry.title}</div>
-                                    <div className="card-body">
-                                        <p className="card-text">
-                                            {entry.body}
-                                        </p>    
-                                    </div>
-                                </div>
-                            </Link>
+                            <EntryPreview id={entry.id} title={entry.title} date={entry.body} />
                         </div>
                     ))
                     }
+
+                    {/* Pagination Control */}
                     <EntryNav 
                         currentPage={currentPage}
                         totalPosts={entries.length}
