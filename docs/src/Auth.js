@@ -1,14 +1,15 @@
 // Code from https://auth0.com/blog/react-tutorial-building-and-securing-your-first-app/#Securing-your-React-App
 
 import auth0 from 'auth0-js';
+import config from './utils/config';
 
 class Auth {
   constructor() {
     this.auth0 = new auth0.WebAuth({
       // the following three lines MUST be updated
-      domain: '<YOUR_AUTH0_DOMAIN>',
-      audience: 'https://<YOUR_AUTH0_DOMAIN>/userinfo',
-      clientID: '<YOUR_AUTH0_CLIENT_ID>',
+      domain: config.jwt.domain,
+      audience: `https://${config.jwt.domain}/userinfo`,
+      clientID: config.jwt.id,
       redirectUri: 'http://localhost:3000/callback',
       responseType: 'id_token',
       scope: 'openid profile'
