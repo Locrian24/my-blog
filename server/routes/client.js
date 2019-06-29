@@ -10,17 +10,11 @@ router
     .route('/')
     .get(apiController.getAll)
 
-    // TODO: Secure with jwt
-    .post(apiController.create);
-
 router
     // Specific blog entry
     .route('/:id')
     .get(apiController.getById)
 
-    // TODO: Secure with jwt
-    .put(apiController.update)
-    .delete(apiController.remove);
 
 
 
