@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 import auth0Client from '../Auth';
 
@@ -8,7 +8,7 @@ class SignIn extends React.Component {
     }
 
     render() {
-        return ( <div></div> )
+        return <div />;
     }
 }
 

@@ -6,7 +6,7 @@ const EntryModel = require('../models/Entry');
 module.exports = {
     getAll: (req, res) => {
         EntryModel.find(req.query)
-            .then(entries => res.status(202).json(entries))
+            .then(entries => res.status(202).json(entries.reverse()))
             .catch(err => res.status(422).json(err));
     },
     getById: (req,res) => {
