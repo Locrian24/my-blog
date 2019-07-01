@@ -9,10 +9,16 @@ export default {
     getAllEntries: () => {
         return axios.get(jsonPlaceholderUrl);
     },
-    getEntryById: (id) => {
-        return axios.get(jsonPlaceholderUrl + id)
+    getEntryById: id => {
+        return axios.get(jsonPlaceholderUrl + id);
     },
     createNew: (data, headers) => {
-        return axios.post(jsonPlaceholderUrl, data, headers)
+        return axios.post(jsonPlaceholderUrl, data, headers);
+    },
+    updateEntry: (id, data, headers) => {
+        return axios.put(jsonPlaceholderUrl + id, data, headers);
+    },
+    delete: (id, headers) => {
+        return axios.delete(jsonPlaceholderUrl + id, headers);
     }
-}
+};

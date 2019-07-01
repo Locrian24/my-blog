@@ -11,6 +11,7 @@ import NewEntry from './pages/NewEntry';
 
 import SignIn from './pages/SignIn';
 import Callback from './pages/Callback';
+import EditEntry from './pages/EditEntry';
 
 function App() {
     return (
@@ -26,6 +27,10 @@ function App() {
                     <Route exact path='/entries/:entryId' component={Entry} />
 
                     <PrivateRoute path='/new-entry' component={NewEntry} />
+                    <PrivateRoute
+                        path='/edit-entry/:entryId'
+                        component={EditEntry}
+                    />
                 </Switch>
             </div>
         </Router>

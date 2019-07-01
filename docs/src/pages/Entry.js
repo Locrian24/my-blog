@@ -49,7 +49,7 @@ class Entry extends React.Component {
                             </div>
                             <div className='col text-right'>
                                 <PrivateLink
-                                    to={`/entry-edit/${entryId}`}
+                                    to={`/edit-entry/${entryId}`}
                                     body={<p>Edit this post...</p>}
                                 />
                             </div>

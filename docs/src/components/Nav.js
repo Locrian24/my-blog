@@ -30,6 +30,7 @@ const Nav = props => {
                             </button>
                         </React.Fragment>
                     )}
+                    <Link to='/signin/'>Sign In</Link>
                 </div>
             </div>
         </div>
