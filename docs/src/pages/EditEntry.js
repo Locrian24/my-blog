@@ -7,9 +7,9 @@ import auth0Client from '../Auth';
 class EditEntry extends React.Component {
     state = {
         title: '',
-        summary: 'json placeholder',
+        summary: '',
         body: '',
-        date: 'json placeholder'
+        date: ''
     };
 
     componentDidMount() {
@@ -20,9 +20,10 @@ class EditEntry extends React.Component {
         const entryId = this.props.match.params.entryId;
         AJAX.getEntryById(entryId)
             .then(res => {
-                const { title, body } = res.data;
+                const { title, summary, body } = res.data;
                 this.setState({
                     title,
+                    summary,
                     body
                 });
             })
@@ -38,8 +39,10 @@ class EditEntry extends React.Component {
 
     handleOnSubmit = e => {
         e.preventDefault();
+        const entryId = this.props.match.params.entryId;
         if (this.state.title && this.state.summary && this.state.body) {
-            AJAX.createNew(
+            AJAX.updateEntry(
+                entryId,
                 {
                     title: this.state.title,
                     summary: this.state.summary,
@@ -58,7 +61,11 @@ class EditEntry extends React.Component {
     };
 
     deleteEntry = id => {
-        AJAX.delete(id)
+        AJAX.delete(id, {
+            headers: {
+                Authorization: `Bearer ${auth0Client.getIdToken()}`
+            }
+        })
             .then(res => {
                 this.props.history.push('/');
                 console.log('Successfully deleted');

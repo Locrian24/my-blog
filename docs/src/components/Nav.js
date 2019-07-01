@@ -30,7 +30,9 @@ const Nav = props => {
                             </button>
                         </React.Fragment>
                     )}
-                    <Link to='/signin/'>Sign In</Link>
+                    {!auth0Client.isAuthenticated() && (
+                        <Link to='/signin/'>Sign In</Link>
+                    )}
                 </div>
             </div>
         </div>

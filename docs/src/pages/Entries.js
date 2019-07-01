@@ -47,13 +47,13 @@ class Entries extends React.Component {
 
         return (
             <div className='container m-3'>
-                <PrivateLink to='/new-entry/' body={<h3>New Entry</h3>} />
+                <PrivateLink to='/new/' body={<h3>New Entry</h3>} />
                 {entries && currentEntries && (
                     <React.Fragment>
                         {currentEntries.map(entry => (
-                            <div key={entry.id}>
+                            <div key={entry._id}>
                                 <EntryPreview
-                                    id={entry.id}
+                                    id={entry._id}
                                     title={entry.title}
                                     date={entry.body}
                                 />

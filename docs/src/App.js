@@ -26,9 +26,9 @@ function App() {
                     <Route exact path='/entries' component={Entries} />
                     <Route exact path='/entries/:entryId' component={Entry} />
 
-                    <PrivateRoute path='/new-entry' component={NewEntry} />
+                    <PrivateRoute path='/new' component={NewEntry} />
                     <PrivateRoute
-                        path='/edit-entry/:entryId'
+                        path='/edits/:entryId'
                         component={EditEntry}
                     />
                 </Switch>
