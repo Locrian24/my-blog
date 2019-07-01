@@ -1,22 +1,23 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import './App.css';
+import './App.scss';
 
-import Nav from './components/Nav';
+import Nav from './components/Nav/Nav';
 import PrivateRoute from './components/PrivateRoute';
 
-import Entries from './pages/Entries';
-import Entry from './pages/Entry';
-import NewEntry from './pages/NewEntry';
+import Entries from './pages/Entries/Entries';
+import Entry from './pages/Entry/Entry';
+
+import NewEntry from './pages/NewEntry/NewEntry';
+import EditEntry from './pages/EditEntry/EditEntry';
 
 import SignIn from './pages/SignIn';
 import Callback from './pages/Callback';
-import EditEntry from './pages/EditEntry';
 
 function App() {
     return (
         <Router>
-            <div className='container'>
+            <div className='wrapper'>
                 <Nav />
                 <Switch>
                     <Route exact path='/signin' component={SignIn} />

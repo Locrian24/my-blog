@@ -1,8 +1,10 @@
 import React from 'react';
-import AJAX from '../utils/ajax';
-import EntryNav from '../components/EntryNav';
-import EntryPreview from '../components/EntryPreview';
-import PrivateLink from '../components/PrivateLink';
+import AJAX from '../../utils/ajax';
+import EntryNav from '../../components/EntryNav';
+import EntryPreview from '../../components/EntryPreview/EntryPreview';
+import PrivateLink from '../../components/PrivateLink';
+
+import './Entries.scss';
 
 class Entries extends React.Component {
     state = {
@@ -46,7 +48,7 @@ class Entries extends React.Component {
         if (entries === null) return <p>Loading Blog Entries...</p>;
 
         return (
-            <div className='container m-3'>
+            <div className='content container m-3'>
                 <PrivateLink to='/new/' body={<h3>New Entry</h3>} />
                 {entries && currentEntries && (
                     <React.Fragment>

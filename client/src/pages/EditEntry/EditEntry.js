@@ -1,8 +1,8 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 
-import AJAX from '../utils/ajax';
-import auth0Client from '../Auth';
+import AJAX from '../../utils/ajax';
+import auth0Client from '../../Auth';
 
 class EditEntry extends React.Component {
     state = {

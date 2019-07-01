@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import PrivateLink from '../components/PrivateLink';
+import PrivateLink from '../../components/PrivateLink';
 
-import AJAX from '../utils/ajax';
+import AJAX from '../../utils/ajax';
 
 class Entry extends React.Component {
     state = {

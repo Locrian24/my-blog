@@ -1,0 +1,16 @@
+@import '../../styles/globals.scss';
+
+.navbar {
+    width: 100%;
+    height: $header-height;
+    background-color: $header-color;
+    color: $header-font-color;
+
+    a {
+        color: $header-font-color;
+    }
+
+    h1 {
+        margin-top: 1rem;
+    }
+}

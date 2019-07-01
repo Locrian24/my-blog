@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
-import auth0Client from '../Auth';
+import auth0Client from '../../Auth';
+import './Nav.scss';
 
 const Nav = props => {
     const signOut = () => {
@@ -9,14 +10,14 @@ const Nav = props => {
     };
 
     return (
-        <div className='container m-3 pt-2'>
-            <div className='row'>
-                <div className='col text-left'>
+        <div className='navbar'>
+            <div className='container'>
+                <div className='text-left'>
                     <Link to='/'>
-                        <h1 className='weight-bold'>My Blog</h1>
+                        <h1 className='weight-bold'>Locrian24</h1>
                     </Link>
                 </div>
-                <div className='col text-right'>
+                <div className='text-right'>
                     {auth0Client.isAuthenticated() && (
                         <React.Fragment>
                             <label className='mr-2'>Authenticated</label>

@@ -1,0 +1,22 @@
+@import './styles/globals.scss';
+
+// CSS Grid classes
+.wrapper {
+  display: grid;
+  grid-gap: 0;
+  grid-template-areas:
+    "header header header"
+    ". content ."
+}
+
+.navbar {
+  grid-area: header;
+}
+
+.content {
+  grid-area: content;
+}
+
+a:hover {
+  text-decoration: none;
+}
