@@ -21,10 +21,13 @@ app.use(morgan('combined'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
+// Serve static files middleware
+app.use(express.static('client/build'));
+
 // Endpoints
 app.use(routes);
 
 // Server
 app.listen(PORT, () => {
     console.log('Server listening on port ' + PORT);
-})
+});
