@@ -1,12 +1,24 @@
 @import './styles/globals.scss';
 
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+body {
+  background: url('./assets/images/forest.jpg') no-repeat top center scroll;
+  background-size: 130%;
+}
+
 // CSS Grid classes
 .wrapper {
   display: grid;
   grid-gap: 0;
   grid-template-areas:
-    "header header header"
-    ". content ."
+    "header"
+    "content"
 }
 
 .navbar {
@@ -14,6 +26,8 @@
 }
 
 .content {
+  min-height: 100%;
+  height: 100%;
   grid-area: content;
 }
 

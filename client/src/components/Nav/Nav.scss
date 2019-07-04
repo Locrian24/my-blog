@@ -5,12 +5,14 @@
     height: $header-height;
     background-color: $header-color;
     color: $header-font-color;
+    position: fixed;
 
     a {
         color: $header-font-color;
     }
 
     h1 {
-        margin-top: 1rem;
+        margin-top: 0.5rem;
+        font-size: $header-font-size;
     }
 }

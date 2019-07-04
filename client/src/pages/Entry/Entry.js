@@ -29,16 +29,10 @@ class Entry extends React.Component {
 
                 {this.state.entry && (
                     <div>
-                        <div className='card m-5'>
-                            <div className='card-header'>
-                                {this.state.entry.title}
-                            </div>
-                            <div className='card-body'>
-                                <p className='card-text'>
-                                    {this.state.entry.body}
-                                </p>
-                                <small>{this.state.entry.userId}</small>
-                            </div>
+                        <div className='m-5'>
+                            <div>{this.state.entry.title}</div>
+                            <p>{this.state.entry.body}</p>
+                            <small>{this.state.entry.userId}</small>
                         </div>
 
                         <div className='row mt-5'>

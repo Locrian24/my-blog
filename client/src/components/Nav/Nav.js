@@ -14,7 +14,7 @@ const Nav = props => {
             <div className='container'>
                 <div className='text-left'>
                     <Link to='/'>
-                        <h1 className='weight-bold'>Locrian24</h1>
+                        <h1>LOCRIAN24</h1>
                     </Link>
                 </div>
                 <div className='text-right'>

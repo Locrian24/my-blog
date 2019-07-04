@@ -48,28 +48,28 @@ class Entries extends React.Component {
         if (entries === null) return <p>Loading Blog Entries...</p>;
 
         return (
-            <div className='content container m-3'>
+            <div className='content container'>
                 <PrivateLink to='/new/' body={<h3>New Entry</h3>} />
                 {entries && currentEntries && (
-                    <React.Fragment>
-                        {currentEntries.map(entry => (
-                            <div key={entry._id}>
-                                <EntryPreview
-                                    id={entry._id}
-                                    title={entry.title}
-                                    date={entry.body}
-                                />
-                            </div>
-                        ))}
+                    <div className='entry-container'>
+                        {/* {currentEntries.map(entry => (
+                                <div key={entry._id}>
+                                    <EntryPreview
+                                        id={entry._id}
+                                        title={entry.title}
+                                        date={entry.body}
+                                    />
+                                </div>
+                            ))}
 
-                        {/* Pagination Control */}
-                        <EntryNav
-                            currentPage={currentPage}
-                            totalPosts={entries.length}
-                            postsPerPage={postsPerPage}
-                            shiftCurrentEntries={this.shiftCurrentEntries}
-                        />
-                    </React.Fragment>
+                            <EntryNav
+                                currentPage={currentPage}
+                                totalPosts={entries.length}
+                                postsPerPage={postsPerPage}
+                                shiftCurrentEntries={this.shiftCurrentEntries}
+                            /> */}
+                        <span>CENTER ME</span>
+                    </div>
                 )}
             </div>
         );

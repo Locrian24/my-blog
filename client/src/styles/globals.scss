@@ -9,12 +9,11 @@ $header-color: #95A3A4;
 $chevron-preview-color: #4A6050;
 
 // Font sizes
-$header-font-size: 64px;
+$header-font-size: 27px;
 
 // Dimensions
-$header-height: 94px;
+$header-height: 69px;
 
-// Global layout helpers
 .container {
-    max-width: 860px;
+    padding: 0 1em;
 }
