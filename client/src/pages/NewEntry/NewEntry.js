@@ -42,8 +42,12 @@ class NewEntry extends React.Component {
 
     componentDidMount() {
         const dateObj = new Date();
-        let dateString = `${dateObj.getDate()}-${dateObj.getMonth() +
-            1}-${dateObj.getFullYear()}`;
+        let dd = dateObj.getDate();
+        let mm = dateObj.getMonth() + 1;
+        let yyyy = dateObj.getFullYear();
+        if (dd < 10) dd = '0' + dd;
+        if (mm < 10) mm = '0' + mm;
+        let dateString = dd + '/' + mm + '/' + yyyy;
         this.setState({
             date: dateString
         });

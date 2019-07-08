@@ -1,0 +1,11 @@
+@import '../../styles/globals.scss';
+
+.disabled {
+    opacity: 0.3;
+}
+
+.nav-arrow {
+    &:hover {
+        cursor: pointer;
+    }
+}

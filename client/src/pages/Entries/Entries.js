@@ -1,6 +1,6 @@
 import React from 'react';
 import AJAX from '../../utils/ajax';
-import EntryNav from '../../components/EntryNav';
+import EntryNav from '../../components/EntryNav/EntryNav';
 import EntryPreview from '../../components/EntryPreview/EntryPreview';
 import PrivateLink from '../../components/PrivateLink';
 
@@ -51,24 +51,32 @@ class Entries extends React.Component {
             <div className='content container'>
                 <PrivateLink to='/new/' body={<h3>New Entry</h3>} />
                 {entries && currentEntries && (
-                    <div className='entry-container'>
-                        {/* {currentEntries.map(entry => (
-                                <div key={entry._id}>
-                                    <EntryPreview
-                                        id={entry._id}
-                                        title={entry.title}
-                                        date={entry.body}
-                                    />
-                                </div>
-                            ))}
+                    <div className='entries-container'>
+                        <EntryNav
+                            currentPage={currentPage}
+                            totalPosts={entries.length}
+                            postsPerPage={postsPerPage}
+                            shiftCurrentEntries={this.shiftCurrentEntries}
+                            shiftDir='-1'
+                        />
 
-                            <EntryNav
-                                currentPage={currentPage}
-                                totalPosts={entries.length}
-                                postsPerPage={postsPerPage}
-                                shiftCurrentEntries={this.shiftCurrentEntries}
-                            /> */}
-                        <span>CENTER ME</span>
+                        {currentEntries.map(entry => (
+                            <div className='flex-block' key={entry._id}>
+                                <EntryPreview
+                                    id={entry._id}
+                                    summary={entry.summary}
+                                    date={entry.date}
+                                />
+                            </div>
+                        ))}
+
+                        <EntryNav
+                            currentPage={currentPage}
+                            totalPosts={entries.length}
+                            postsPerPage={postsPerPage}
+                            shiftCurrentEntries={this.shiftCurrentEntries}
+                            shiftDir='1'
+                        />
                     </div>
                 )}
             </div>

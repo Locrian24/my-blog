@@ -1,15 +1,22 @@
+// Breakpoints
+$break-small: 420px;
+$break-middle: 768px;
+$break-large: 1200px;
+
 // Font Colors
-$header-font-color: #EAF0F0;
-$entry-font-color: #ECEBF0;
-$preview-font-color: #1C2427;
-$preview-date-color: #B5BABB;
+$header-font-color: #eaf0f0;
+$entry-font-color: #ecebf0;
+$preview-summary-color: #1c2427;
+$preview-date-color: #071412;
 
 // Component colors
-$header-color: #95A3A4;
-$chevron-preview-color: #4A6050;
+$header-color: #95a3a4;
+$chevron-preview-color: #4a6050;
 
 // Font sizes
 $header-font-size: 27px;
+$entry-title-size: 32px;
+$entry-body-size: 18px;
 
 // Dimensions
 $header-height: 69px;

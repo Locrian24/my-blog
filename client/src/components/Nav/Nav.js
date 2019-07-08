@@ -1,5 +1,8 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTree } from '@fortawesome/free-solid-svg-icons';
+
 import auth0Client from '../../Auth';
 import './Nav.scss';
 
@@ -9,12 +12,19 @@ const Nav = props => {
         props.history.replace('/');
     };
 
+    const titleGap = {
+        marginLeft: '15px'
+    };
+
     return (
         <div className='navbar'>
             <div className='container'>
                 <div className='text-left'>
                     <Link to='/'>
-                        <h1>LOCRIAN24</h1>
+                        <h1>
+                            <FontAwesomeIcon icon={faTree} />
+                            <span style={titleGap}>LOCRIAN24</span>
+                        </h1>
                     </Link>
                 </div>
                 <div className='text-right'>

@@ -1,0 +1,45 @@
+@import '../../styles/globals.scss';
+
+.entry-container {
+    margin-top: $header-height;
+}
+
+.entry-content {
+    display: flex;
+    flex-direction: column;
+
+    margin: 4em 2em 0 2em;
+    padding: 1em;
+
+    color: $entry-font-color;
+
+    .icon {
+        margin: 0 auto;
+        color: $preview-summary-color;
+
+        a {
+            color: $preview-summary-color;
+        }
+
+        &.edit {
+            color: $entry-font-color;
+            margin-top: 15px;
+        }
+    }
+
+    .title {
+        font-size: $entry-title-size;
+        margin-top: 1em;
+        margin-bottom: 1em;
+    }
+
+    .body {
+        font-size: $entry-body-size;
+        font-weight: 300;
+        max-height: 50vh;
+
+        padding-right: 3em;
+
+        overflow-y: scroll;
+    }
+}
