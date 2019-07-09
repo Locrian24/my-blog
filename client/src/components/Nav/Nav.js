@@ -41,9 +41,9 @@ const Nav = props => {
                             </button>
                         </React.Fragment>
                     )}
-                    {!auth0Client.isAuthenticated() && (
+                    {/* {!auth0Client.isAuthenticated() && (
                         <Link to='/signin/'>Sign In</Link>
-                    )}
+                    )} */}
                 </div>
             </div>
         </div>

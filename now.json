@@ -1,0 +1,27 @@
+{
+    "version": 2,
+    "name": "blog",
+    "public": false,
+    "builds": [
+        {
+            "src": "/server/server.js",
+            "use": "@now/node"
+        },
+        {
+            "src": "/client/package.json",
+            "use": "@now/static-build",
+            "config": { "distDir": "build" }
+        }
+    ],
+    "env": {
+        "MONGODB_URI": "@my-mongodb-uri",
+        "AUTH_DOMAIN": "@auth0-domain",
+        "AUTH_CLIENT_ID": "@auth0-client-id"
+    },
+    "routes": [
+        { "src": "/api/(.*)", "dest": "/server/server.js" },
+        { "src": "^/static/(.*)", "dest": "/client/static/$1" },
+        { "src": "^/favicon.ico", "dest": "/client/favicon.ico" },
+        { "src": "/(.*)", "dest": "/client/index.html" }
+    ]
+}

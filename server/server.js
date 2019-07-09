@@ -8,7 +8,7 @@ const helmet = require('helmet');
 const app = express();
 const routes = require('./routes');
 
-const PORT = 8080;
+const PORT = 5000;
 
 // establish connection with MongoDB
 require('./config');
@@ -21,13 +21,12 @@ app.use(morgan('combined'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-// Serve static files middleware
-app.use(express.static('client/build'));
-
 // Endpoints
 app.use(routes);
 
 // Server
-app.listen(PORT, () => {
-    console.log('Server listening on port ' + PORT);
-});
+module.exports = app;
+
+// app.listen(PORT, () => {
+//     console.log('Listening on port ' + PORT);
+// });

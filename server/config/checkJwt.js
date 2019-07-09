@@ -2,8 +2,8 @@ const jwt = require('express-jwt');
 const jwksRsa = require('jwks-rsa');
 const jwtConfig = require('./config').jwt;
 
-const jwtDomain = jwtConfig.domain;
-const jwtClientId = jwtConfig.id;
+const jwtDomain = process.env.AUTH_DOMAIN || jwtConfig.domain;
+const jwtClientId = process.env.AUTH_CLIENT_ID || jwtConfig.id;
 
 const checkJwt = jwt({
     secret: jwksRsa.expressJwtSecret({

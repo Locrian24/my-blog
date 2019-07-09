@@ -6,6 +6,11 @@ import PrivateLink from '../../components/PrivateLink';
 
 import './Entries.scss';
 
+import {
+    faChevronRight,
+    faChevronLeft
+} from '@fortawesome/free-solid-svg-icons';
+
 class Entries extends React.Component {
     state = {
         entries: null,
@@ -16,7 +21,30 @@ class Entries extends React.Component {
 
     componentDidMount() {
         this.loadEntries();
+        this.handleResize();
+        window.addEventListener('resize', this.handleResize);
     }
+
+    componentWillUnmount() {
+        window.removeEventListener('resize', this.handleResize);
+    }
+
+    handleResize = () => {
+        switch (true) {
+            case window.innerWidth <= 420:
+                this.setState({ postsPerPage: 1 });
+                break;
+            case window.innerWidth <= 768:
+                this.setState({ postsPerPage: 2 });
+                break;
+            case window.innerWidth <= 991:
+                this.setState({ postsPerPage: 3 });
+                break;
+            default:
+                this.setState({ postsPerPage: 4 });
+                break;
+        }
+    };
 
     loadEntries = () => {
         AJAX.getAllEntries()
@@ -58,6 +86,7 @@ class Entries extends React.Component {
                             postsPerPage={postsPerPage}
                             shiftCurrentEntries={this.shiftCurrentEntries}
                             shiftDir='-1'
+                            arrowIcon={faChevronLeft}
                         />
 
                         {currentEntries.map(entry => (
@@ -76,6 +105,7 @@ class Entries extends React.Component {
                             postsPerPage={postsPerPage}
                             shiftCurrentEntries={this.shiftCurrentEntries}
                             shiftDir='1'
+                            arrowIcon={faChevronRight}
                         />
                     </div>
                 )}

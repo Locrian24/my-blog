@@ -5,12 +5,11 @@ body {
     margin: 0;
     padding: 0;
     height: 100%;
-    overflow: hidden;
 }
 
 .bg {
     background: url('./assets/images/forest.jpg') no-repeat top center scroll;
-    background-size: 135%;
+    background-size: 250vh !important;
     width: 100vw;
     height: 100vh;
     z-index: -1;
