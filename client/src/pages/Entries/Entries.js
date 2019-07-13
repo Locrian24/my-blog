@@ -1,5 +1,4 @@
 import React from 'react';
-import AJAX from '../../utils/ajax';
 import EntryNav from '../../components/EntryNav/EntryNav';
 import EntryPreview from '../../components/EntryPreview/EntryPreview';
 import PrivateLink from '../../components/PrivateLink';
@@ -20,7 +19,9 @@ class Entries extends React.Component {
     };
 
     componentDidMount() {
-        this.loadEntries();
+        this.setState({ entries: this.props.entries });
+        console.log(this.state.entries);
+        //this.loadEntries();
         this.handleResize();
         window.addEventListener('resize', this.handleResize);
     }
@@ -46,13 +47,13 @@ class Entries extends React.Component {
         }
     };
 
-    loadEntries = () => {
-        AJAX.getAllEntries()
-            .then(res => {
-                this.setState({ entries: res.data });
-            })
-            .catch(err => 'Error getting entries: ' + err);
-    };
+    // loadEntries = () => {
+    //     AJAX.getAllEntries()
+    //         .then(res => {
+    //             this.setState({ entries: res.data });
+    //         })
+    //         .catch(err => 'Error getting entries: ' + err);
+    // };
 
     shiftCurrentEntries = pageNumber => {
         this.setState({ currentPage: pageNumber });

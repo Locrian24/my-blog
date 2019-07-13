@@ -2,6 +2,8 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.scss';
 
+import AJAX from './utils/ajax';
+
 import Nav from './components/Nav/Nav';
 import PrivateRoute from './components/PrivateRoute';
 import BackgroundController from './components/BackgroundController';
@@ -15,35 +17,66 @@ import EditEntry from './pages/EditEntry/EditEntry';
 import SignIn from './pages/SignIn';
 import Callback from './pages/Callback';
 
-function App() {
-    return (
-        <Router>
-            <BackgroundController>
-                <div className='wrapper'>
-                    <Nav />
-                    <Switch>
-                        <Route exact path='/signin' component={SignIn} />
-                        <Route exact path='/callback' component={Callback} />
+class App extends React.Component {
+    state = {
+        entries: null
+    };
 
-                        <Route exact path='/' component={Entries} />
-                        <Route exact path='/entries' component={Entries} />
+    componentDidMount() {
+        AJAX.getAllEntries()
+            .then(res => {
+                this.setState({ entries: res.data });
+            })
+            .catch(err => 'Error getting entries: ' + err);
+    }
 
-                        <Route
-                            exact
-                            path='/entries/:entryId'
-                            component={Entry}
-                        />
-
-                        <PrivateRoute path='/new' component={NewEntry} />
-                        <PrivateRoute
-                            path='/edits/:entryId'
-                            component={EditEntry}
-                        />
-                    </Switch>
-                </div>
-            </BackgroundController>
-        </Router>
-    );
+    render() {
+        return (
+            <Router>
+                <BackgroundController>
+                    <div className='wrapper'>
+                        <Nav />
+                        <Switch>
+                            <Route exact path='/signin' component={SignIn} />
+                            <Route
+                                exact
+                                path='/callback'
+                                component={Callback}
+                            />
+                            {this.state.entries && (
+                                <Route
+                                    exact
+                                    path='/'
+                                    render={() => (
+                                        <Entries entries={this.state.entries} />
+                                    )}
+                                />
+                            )}
+                            {this.state.entries && (
+                                <Route
+                                    exact
+                                    path='/entries'
+                                    render={() => (
+                                        <Entries entries={this.state.entries} />
+                                    )}
+                                />
+                            )}
+                            <Route
+                                exact
+                                path='/entries/:entryId'
+                                component={Entry}
+                            />
+                            <PrivateRoute path='/new' component={NewEntry} />
+                            <PrivateRoute
+                                path='/edits/:entryId'
+                                component={EditEntry}
+                            />
+                        </Switch>
+                    </div>
+                </BackgroundController>
+            </Router>
+        );
+    }
 }
 
 export default App;
